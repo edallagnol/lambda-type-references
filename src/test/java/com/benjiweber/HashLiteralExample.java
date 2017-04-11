@@ -1,13 +1,14 @@
 package com.benjiweber;
 
-import com.benjiweber.typeref.NamedValue;
-import org.junit.Test;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import com.benjiweber.typeref.NamedValue;
 
 public class HashLiteralExample {
     @Test
@@ -23,7 +24,8 @@ public class HashLiteralExample {
         assertEquals("was here", hash.get("bill"));
     }
 
-    public static <T> Map<String, T> hash(NamedValue<T>... keyValuePairs) {
+    @SafeVarargs
+	public static <T> Map<String, T> hash(NamedValue<T>... keyValuePairs) {
         Map<String, T> map = new HashMap<>();
         asList(keyValuePairs)
             .stream()

@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.lang.invoke.SerializedLambda;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.Arrays;
 import java.util.Objects;
-
-import static java.util.Arrays.asList;
 
 public interface MethodFinder extends Serializable {
     default SerializedLambda serialized() {
@@ -31,8 +30,7 @@ public interface MethodFinder extends Serializable {
     default Method method() {
         SerializedLambda lambda = serialized();
         Class<?> containingClass = getContainingClass();
-        return asList(containingClass.getDeclaredMethods())
-                .stream()
+        return Arrays.stream(containingClass.getDeclaredMethods())
                 .filter(method -> Objects.equals(method.getName(), lambda.getImplMethodName()))
                 .findFirst()
                 .orElseThrow(UnableToGuessMethodException::new);
@@ -46,5 +44,7 @@ public interface MethodFinder extends Serializable {
         return DefaultValue.ofType(parameter(n).getType());
     }
 
-    class UnableToGuessMethodException extends RuntimeException {}
+    class UnableToGuessMethodException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
 }

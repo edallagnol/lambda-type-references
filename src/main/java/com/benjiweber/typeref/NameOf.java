@@ -1,13 +1,7 @@
 package com.benjiweber.typeref;
 
-import com.benjiweber.typeref.NewableConsumer;
-
-import java.util.function.Consumer;
-
 public class NameOf {
-    public static void main(String... args) {
-        new NameOf().aMethod(null);
-    }
+
     public void aMethod(String aParam) {
         throw new NullPointerException(nameof(this::aMethod, 0));
     }

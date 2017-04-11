@@ -1,14 +1,16 @@
 package com.benjiweber;
 
-import com.benjiweber.typeref.MethodAwarePredicate;
-import org.hamcrest.CoreMatchers;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.startsWith;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import com.benjiweber.typeref.MethodAwarePredicate;
 
 public class MethodFinderExample {
 

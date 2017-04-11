@@ -24,7 +24,8 @@ public class DefaultValue {
         defaultValues.put(Double.class, 0.0d);
     }
 
-    public static <T> T ofType(Class<?> type) {
+    @SuppressWarnings("unchecked")
+	public static <T> T ofType(Class<?> type) {
         return (T) defaultValues.getOrDefault(type, null);
     }
 }
